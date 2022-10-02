@@ -1,0 +1,32 @@
+"""Exposes a URL that specifies the behavior of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behavior of this scalar."""
+  url: String!
+) on SCALAR
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  addTodo(todoDto: TodoDto!): Todo!
+  deleteTodo(todoId: Float!): Int!
+  updateTodo(todoDto: TodoDto!, todoId: Float!): Todo!
+}
+
+type Query {
+  todos: [Todo!]!
+}
+
+type Todo {
+  body: String!
+  createdAt: DateTime!
+  id: Float!
+  updatedAt: DateTime!
+}
+
+input TodoDto {
+  body: String!
+}
+
