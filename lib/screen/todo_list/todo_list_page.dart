@@ -6,6 +6,7 @@ import 'package:frontend/bloc/todo_list/todo_list_bloc.dart';
 import 'package:frontend/bloc/todo_list/todo_list_state.dart';
 import 'package:frontend/qraphql/todo/__generated__/todo.query.data.gql.dart';
 import 'package:frontend/qraphql/todo/__generated__/todo.query.var.gql.dart';
+import 'package:frontend/screen/todo_item_view.dart';
 import 'package:get_it/get_it.dart';
 
 class TodoListPage extends StatelessWidget {
@@ -37,14 +38,21 @@ class TodoListPage extends StatelessWidget {
                 return const Center(child: CircularProgressIndicator());
               }
 
-              return ListView.builder(
+              return ListView.separated(
                 itemCount: todoData.length,
                 itemBuilder: (context, index) {
                   final todo = todoData[index];
-                  return Container(
-                    child: Text(todo.body),
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: TodoItemView(
+                      title: todo.body,
+                      date: todo.createdAt.value,
+                    ),
                   );
                 },
+                separatorBuilder: ((context, index) {
+                  return const Divider();
+                }),
               );
             },
           ),
