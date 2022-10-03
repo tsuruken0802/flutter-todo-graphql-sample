@@ -4,7 +4,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:frontend/qraphql/__generated__/serializers.gql.dart' as _i2;
+import 'package:frontend/__generated__/serializers.gql.dart' as _i2;
 import 'package:gql_code_builder/src/serializers/default_scalar_serializer.dart'
     as _i1;
 

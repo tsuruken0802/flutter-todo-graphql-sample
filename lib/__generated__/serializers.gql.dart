@@ -5,7 +5,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
 import 'package:ferry_exec/ferry_exec.dart';
-import 'package:frontend/qraphql/__generated__/schema.schema.gql.dart'
+import 'package:frontend/__generated__/schema.schema.gql.dart'
     show GDateTime, GTodoDto;
 import 'package:frontend/qraphql/todo/__generated__/todo.query.data.gql.dart'
     show GGetTodosData, GGetTodosData_todos;

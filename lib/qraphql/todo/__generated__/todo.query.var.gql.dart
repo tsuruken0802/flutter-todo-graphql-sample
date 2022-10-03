@@ -4,7 +4,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:frontend/qraphql/__generated__/serializers.gql.dart' as _i1;
+import 'package:frontend/__generated__/serializers.gql.dart' as _i1;
 
 part 'todo.query.var.gql.g.dart';
 

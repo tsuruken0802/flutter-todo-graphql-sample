@@ -8,3 +8,5 @@ abstract class TodoListEvent extends Equatable {
 }
 
 class OnFirstRequest extends TodoListEvent {}
+
+class OnRefreshControl extends TodoListEvent {}

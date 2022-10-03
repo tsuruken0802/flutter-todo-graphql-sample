@@ -4,8 +4,8 @@ targets:
       ferry_generator|graphql_builder:
         enabled: true
         options:
-          schema: frontend|lib/qraphql/schema.graphql
+          schema: frontend|lib/schema.graphql
       ferry_generator|serializer_builder:
         enabled: true
         options:
-          schema: frontend|lib/qraphql/schema.graphql
+          schema: frontend|lib/schema.graphql

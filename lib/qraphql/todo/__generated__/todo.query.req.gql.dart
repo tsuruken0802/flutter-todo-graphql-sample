@@ -5,7 +5,7 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:ferry_exec/ferry_exec.dart' as _i1;
-import 'package:frontend/qraphql/__generated__/serializers.gql.dart' as _i6;
+import 'package:frontend/__generated__/serializers.gql.dart' as _i6;
 import 'package:frontend/qraphql/todo/__generated__/todo.query.ast.gql.dart'
     as _i5;
 import 'package:frontend/qraphql/todo/__generated__/todo.query.data.gql.dart'

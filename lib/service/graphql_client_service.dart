@@ -1,5 +1,4 @@
 import 'package:ferry/ferry.dart';
-import 'package:ferry/typed_links.dart';
 import 'package:ferry_hive_store/ferry_hive_store.dart';
 import 'package:gql_http_link/gql_http_link.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -17,7 +16,7 @@ class GraphQLClientService {
 
     final client = Client(
       link: link,
-      cache: cache,
+      // cache: cache,
     );
     return client;
   }
