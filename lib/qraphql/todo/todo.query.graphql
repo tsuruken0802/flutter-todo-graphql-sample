@@ -1,0 +1,8 @@
+query GetTodos {
+  todos {
+    id
+    body
+    createdAt
+    updatedAt
+  }
+}
