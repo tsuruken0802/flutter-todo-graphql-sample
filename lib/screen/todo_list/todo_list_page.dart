@@ -5,10 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/bloc/todo_list/todo_list_bloc.dart';
 import 'package:frontend/bloc/todo_list/todo_list_event.dart';
 import 'package:frontend/bloc/todo_list/todo_list_state.dart';
+import 'package:frontend/helper/route_helper.dart';
 import 'package:frontend/qraphql/todo/__generated__/todo.query.data.gql.dart';
 import 'package:frontend/qraphql/todo/__generated__/todo.query.var.gql.dart';
+import 'package:frontend/screen/todo_detail/todo_detail_page.dart';
 import 'package:frontend/screen/todo_item_view.dart';
 import 'package:get_it/get_it.dart';
+// ignore: depend_on_referenced_packages
 import 'package:built_collection/built_collection.dart';
 
 class TodoListPage extends StatelessWidget {
@@ -17,19 +20,6 @@ class TodoListPage extends StatelessWidget {
   }) : super(key: key);
   final client = GetIt.I.get<Client>();
   final _bloc = TodoListBloc();
-
-  _stream() {
-    return StreamBuilder<OperationResponse<GGetTodosData, GGetTodosVars>>(
-      builder: (context, snapshot) {
-        final todoData = snapshot.data?.data?.todos;
-        if (todoData == null) {
-          return Container();
-        }
-        return _list(todoData);
-      },
-      stream: _bloc.state.stream,
-    );
-  }
 
   _list(BuiltList<GGetTodosData_todos> todoData) {
     return RefreshIndicator(
@@ -42,9 +32,14 @@ class TodoListPage extends StatelessWidget {
           final todo = todoData[index];
           return Padding(
             padding: const EdgeInsets.all(16.0),
-            child: TodoItemView(
-              title: todo.body,
-              date: todo.createdAt.value,
+            child: GestureDetector(
+              onTap: () {
+                RouteHelper.push(context, TodoDetailPage(todo: todo));
+              },
+              child: TodoItemView(
+                title: todo.body,
+                date: todo.createdAt.value,
+              ),
             ),
           );
         },
@@ -64,8 +59,6 @@ class TodoListPage extends StatelessWidget {
         OperationResponse<GGetTodosData, GGetTodosVars>? response,
         Object? error,
       ) {
-        print(error);
-        // print(response?.dataSource);
         if (response == null) {
           return Container();
         }
@@ -73,7 +66,6 @@ class TodoListPage extends StatelessWidget {
         if (response.loading || todoData == null) {
           return const Center(child: CircularProgressIndicator());
         }
-
         return _list(todoData);
       },
     );
