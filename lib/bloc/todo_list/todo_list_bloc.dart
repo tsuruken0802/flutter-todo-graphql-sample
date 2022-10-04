@@ -30,7 +30,9 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
   listen(Emitter<TodoListState> emit) async {
     final client = await GraphQLClientService.get();
     final request = GGetTodosReq(
-      (b) => b..fetchPolicy = FetchPolicy.CacheAndNetwork,
+      (b) => b
+        ..fetchPolicy = FetchPolicy.NoCache
+        ..requestId = DateTime.now().toIso8601String(),
     );
     final stream = client.request(request);
     emit(state.copyWith(stream: stream, todoReq: request));

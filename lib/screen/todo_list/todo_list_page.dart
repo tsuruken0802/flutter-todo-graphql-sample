@@ -64,7 +64,8 @@ class TodoListPage extends StatelessWidget {
         OperationResponse<GGetTodosData, GGetTodosVars>? response,
         Object? error,
       ) {
-        print(response?.dataSource);
+        print(error);
+        // print(response?.dataSource);
         if (response == null) {
           return Container();
         }
